@@ -92,3 +92,4 @@ price = sum_price(list_of_km, list_of_rub)
 
 print(*result_indexes, sep=' ')
 print(price)
+print(number_name.name_the_number(price))
