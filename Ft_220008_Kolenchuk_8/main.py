@@ -1,3 +1,4 @@
+import sys
 import number_name
 
 
@@ -47,10 +48,18 @@ def fill_lists(input_str):
         if f == 0:
             continue
         if f == 1:
-            list_of_km.append(int(element))
+            try:
+                list_of_km.append(int(element))
+            except ValueError:
+                print("Неверный ввод")
+                sys.exit()
             continue
         if f == 2:
-            list_of_rub.append(int(element))
+            try:
+                list_of_rub.append(int(element))
+            except ValueError:
+                print("Неверный ввод")
+                sys.exit()
             continue
 
 
@@ -72,8 +81,21 @@ def sum_price(list_of_km, list_of_rub):
     return res
 
 
+print('Введите данные в виде: количество_сотрудников - расстояния_в_километрах - тарифы_в_рублях '
+      '\nРасстояния и тарифы перечисляются через пробел, все числа - положительные целые'
+      '\n пример:'
+      '\n3 - 20 40 60 - 30 10 20')
 string = list(input().split())
-count = int(string[0])
+
+try:
+    count = int(string[0])
+except ValueError:
+    print("Ошибка. Количество сотрудников является целым положительным числом. Повторите ввод")
+    sys.exit()
+if count <= 0:
+    print("Ошибка. Количество сотрудников является целым положительным числом. Повторите ввод")
+    sys.exit()
+
 list_of_km = []
 list_of_rub = []
 fill_lists(string)
